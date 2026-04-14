@@ -1,0 +1,3 @@
+/* old — rendered "X" as a text character */
+.cell--x { color: var(--color-mark-x); cursor: default; … }
+.cell--x::after { content: "X"; }
