@@ -1,0 +1,22 @@
+/* BEFORE */
+.cell--o::after { content: "O"; }   /* plain text letter */
+
+/* AFTER */
+span.o {
+  display: block;
+  width        : 58px;
+  height       : 58px;
+  border-radius: 50%;                              /* circular ring */
+  border       : 5px solid var(--color-mark-o);   /* blue ring */
+  box-shadow   : 0 0 14px rgba(52, 152, 219, 0.40),
+                 0 2px  6px rgba(0, 0, 0, 0.20);  /* soft glow */
+  pointer-events: none;
+  transition   : border-color 0.15s, box-shadow 0.15s;
+}
+
+/* Winning state — ring turns green */
+.cell--winning span.o {
+  border-color: var(--color-winning-border);
+  box-shadow  : 0 0 0 2px var(--color-winning-border),
+                0 0 18px rgba(46, 213, 115, 0.50);
+}
