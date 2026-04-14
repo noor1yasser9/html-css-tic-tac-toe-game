@@ -1,0 +1,37 @@
+/* ── Mark X ──────────────────────────────────────────────────────────── */
+.cell--x {
+  cursor: default;
+  animation: cell-appear var(--appear-duration) var(--ease-spring) both;
+}
+
+span.x {
+  position      : relative;
+  display       : block;
+  width         : 52px;      /* fits inside the 100 px cell */
+  height        : 52px;
+  pointer-events: none;
+}
+
+span.x::before,
+span.x::after {
+  content         : '';
+  position        : absolute;
+  top             : 50%;
+  left            : 0;
+  width           : 100%;
+  height          : 6px;                    /* arm thickness */
+  background-color: var(--color-mark-x);   /* red token, theme-aware */
+  border-radius   : 3px;                    /* rounded caps */
+  transform-origin: center;
+  transition      : background-color 0.15s, box-shadow 0.15s;
+}
+
+span.x::before { transform: translateY(-50%) rotate(45deg);  }  /* ╲ */
+span.x::after  { transform: translateY(-50%) rotate(-45deg); }  /* ╱ */
+
+/* Winning state — X arms glow green like the winning border */
+.cell--winning span.x::before,
+.cell--winning span.x::after {
+  background-color: var(--color-winning-border);
+  box-shadow      : 0 0 10px rgba(46, 213, 115, 0.50);
+}
