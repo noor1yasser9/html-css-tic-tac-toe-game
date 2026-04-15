@@ -1,19 +1,15 @@
-/* BEFORE */
-body {
-  min-height: 100dvh;        /* viewport units variant */
-  display: flex;
-  align-items: flex-start;   /* pushed content to top */
-  justify-content: center;
-  padding: 24px 16px 48px;
-}
+/* ① display: grid */
+.sg-grid { display: grid; }
 
-/* AFTER */
-body {
-  min-height: 100vh;         /* ✅ standard 100vh as required */
-  display: flex;
-  align-items: center;       /* ✅ vertical centering */
-  justify-content: center;   /* ✅ horizontal centering (already present) */
-  background-color: var(--color-bg);   /* ✅ background color set on body */
-  font-family: 'Segoe UI', 'Noto Kufi Arabic', 'Tahoma', system-ui, sans-serif; /* ✅ font set on body */
-  padding: 24px 16px 48px;
-}
+/* ② grid-template-columns: repeat(3, 1fr) */
+.sg-grid { grid-template-columns: repeat(3, 1fr); }
+
+/* ③ Fixed 100px × 100px cells — container locked to 300px → 1fr = 100px */
+.sg-grid { width: 300px; height: 300px; }
+.sg-grid__cell { width: 100px; height: 100px; }
+
+/* ④ Inner borders only — right + bottom on every cell */
+.sg-grid__cell { border-right: 2px solid #ccc; border-bottom: 2px solid #ccc; }
+/* Remove outer-edge borders */
+.sg-grid__cell:nth-child(3n)  { border-right:  none; } /* rightmost col */
+.sg-grid__cell:nth-child(n+7) { border-bottom: none; } /* bottom row    */
