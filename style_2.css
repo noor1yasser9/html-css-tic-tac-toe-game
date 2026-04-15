@@ -1,5 +1,6 @@
-span.o::before {
-  content: '';  position: absolute;
-  inset: 8px;   border-radius: 50%;
-  border: 1.5px solid rgba(52, 152, 219, 0.28);
+@keyframes o-appear {
+  0%   { transform: scale(0.1); opacity: 0; }   /* starts invisible   */
+  55%  { transform: scale(1.20); opacity: 1; }  /* bounces past 100%  */
+  78%  { transform: scale(0.92); }              /* settles back in    */
+  100% { transform: scale(1);    opacity: 1; }  /* rests at full size */
 }
